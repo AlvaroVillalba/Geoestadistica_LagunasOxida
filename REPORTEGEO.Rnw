@@ -1,0 +1,430 @@
+% -------------------------------------------------------------------------------
+% Preambulo
+
+\documentclass[12pt,latterpaper]{article}
+\usepackage[latin1]{inputenc}
+\usepackage[spanish,es-tabla]{babel}
+\usepackage{graphicx}
+\usepackage[left=3cm,right=2cm,top=4cm,bottom=2cm]{geometry}
+\usepackage{mathrsfs,amsfonts,amsthm,amsmath,amssymb,float}
+\usepackage[compact,small]{titlesec}
+\renewcommand{\baselinestretch}{1}
+\setlength{\parskip}{10pt}
+
+% -------------------------------------------------------------------------------
+
+\begin{document}
+
+% -------------------------------------------------------------------------------
+% PORTADA
+
+\begin{titlepage}
+
+\vspace*{0.8in}
+
+\begin{center}
+\vspace*{-1in}
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width=8cm]{logo}
+\end{center}
+\end{figure}
+\vspace{0.30in}
+FACULTAD DE ESTADÍSTICA\\
+\vspace*{0.15in}
+\begin{Large}
+MAESTRÍA EN ESTADÍSTICA APLICADA \\
+\end{Large}
+\vspace*{0.6in}
+\begin{large}
+Trabajo 1\\
+\end{large}
+\vspace*{0.3in}
+ESTADÍSTICA ESPACIAL \\
+\vspace*{0.3in}
+\begin{large}
+Taller de Geoestadística\\
+\end{large}
+\vspace*{0.3in}
+\rule{80mm}{0.1mm}\\
+\vspace*{0.3in}
+\begin{large}
+Elaborado por: \\
+Julio Cesar Torres Vega \\
+Edgar Felipe Ruiz Roberto \\
+Jorge Alberto Chaparro Pesca \\
+\end{large}
+\vspace*{0.4in}
+\begin{large}
+Presentado a: \\
+Ph.D. Felipe Ortíz \\
+\end{large}
+
+\end{center}
+
+\end{titlepage}
+
+% ---------------------------------------------------------------------------------
+
+\section{Introducción}
+
+El petróleo es  un líquido oleoso bituminoso de origen natural compuesto por diferentes sustancias orgánicas. También recibe los nombres de petróleo crudo, crudo petrolífero o simplemente "crudo". Se encuentra en grandes cantidades bajo la superficie terrestre y se emplea como combustible y materia prima para la industria química. Las sociedades industriales modernas lo utilizan sobre todo para lograr un grado de movilidad por tierra, mar y aire impensable hace sólo 100 años. Además, el petróleo y sus derivados se emplean para fabricar medicinas, fertilizantes, productos alimenticios, objetos de plástico, materiales de construcción, pinturas y textiles, y para generar electricidad.
+
+En la actualidad, los distintos países dependen del petróleo y sus productos; la estructura física y la forma de vida de las aglomeraciones periféricas que rodean las grandes ciudades son posibles gracias a un suministro de petróleo relativamente abundante y barato. Sin embargo, en los últimos años ha descendido la disponibilidad mundial de esta materia, y su costo relativo ha aumentado. Es probable que, a mediados del siglo XXI, el petróleo ya no se use comercialmente de forma habitual.
+
+La mayoría de los pozos petrolíferos se perforan con el método rotatorio. En este método, una torre sostiene la cadena de perforación, formada por una serie de tubos acoplados. La cadena se hace girar uniéndola al banco giratorio situado en el suelo de la torre. La broca de perforación situada al final de la cadena suele estar formada por tres ruedas cónicas con dientes de acero endurecido. La broca se lleva a la superficie por un sistema continuo de fluido circulante impulsado por una bomba.
+
+El crudo atrapado en un yacimiento se encuentra bajo presión; si no estuviera atrapado por rocas impermeables habría seguido ascendiendo debido a su flotabilidad hasta brotar en la superficie terrestre. Por ello, cuando se perfora un pozo que llega hasta una acumulación de petróleo a presión, el petróleo se expande hacia la zona de baja presión creada por el pozo en comunicación con la superficie terrestre. Sin embargo, a medida que el pozo se llena de líquido aparece una presión contraria sobre el depósito, y pronto se detendría el flujo de líquido adicional hacia el pozo si no se dieran otras circunstancias. La mayor parte del petróleo contiene una cantidad significativa de gas natural en disolución, que se mantiene disuelto debido a las altas presiones del depósito. Cuando el petróleo pasa a la zona de baja presión del pozo, el gas deja de estar disuelto y empieza a expandirse. Esta expansión, junto con la dilución de la columna de petróleo por el gas, menos denso, hace que el petróleo aflore a la superficie.
+
+A medida que se continúa retirando líquido del yacimiento, la presión del mismo va disminuyendo poco a poco, así como la cantidad de gas disuelto. Esto hace que la velocidad de flujo del líquido hacia el pozo se haga menor y se libere menos gas. Cuando el petróleo ya no llega a la superficie se hace necesario instalar una bomba en el pozo para continuar extrayendo el crudo.
+
+Finalmente, la velocidad de flujo del petróleo se hace tan pequeña, y el coste de elevarlo hacia la superficie aumenta tanto, que el coste de funcionamiento del pozo es mayor que los ingresos que se pueden obtener por la venta del crudo (una vez descontados los gastos de explotación, impuestos, seguros y rendimientos del capital). Esto significa que se ha alcanzado el límite económico del pozo, por lo que se abandona su explotación.
+
+\newpage
+\section{Planteamiento del problema}
+
+\textit{\textbf{Inyección de agua}}
+
+Para sacarle el mayor provecho a los posos de petróleo los ingenieros de exploración inventaron los métodos de inyección a alta presión. La inyección de agua se introdujo por primera vez en los campos petrolíferos de Pennsylvania a finales del siglo XIX, de forma más o menos accidental, y desde entonces se ha extendido por todo el mundo.
+Los primeros en usarlos fueron los alemanes durante la segunda guerra mundial, por el bloque de los aliados a sus convoyes de petróleo del medio oriente; perfeccionado por los americanos durante la crisis del petróleo en 1940.
+
+En un campo petrolífero explotado en su totalidad, los pozos se pueden perforar a una distancia de entre 50 y 500 m, según la naturaleza del yacimiento. Si se bombea agua en uno de cada dos pozos, puede mantenerse o incluso incrementarse la presión del yacimiento en su conjunto. Con ello también se puede aumentar el ritmo de producción de crudo; además, el agua desplaza físicamente al petróleo, por lo que aumenta la eficiencia de recuperación. En algunos depósitos con un alto grado de uniformidad y un bajo contenido en arcilla o barro, la inundación con agua puede aumentar la eficiencia de recuperación hasta alcanzar el 60\% o más del petróleo existente.
+
+Pero el problema es cuando hay que recuperar el agua, pues generalmente estos posos están en regiones desérticas o de difícil acceso, con el auge de la ecología y de la preservación del ecosistema, las multas de los estados a las compañías contaminantes, han obligado a estas ultimas a aprovechar lo mas posible sus recursos; sin aumentar sus costos de exploración.
+
+Cundo se reciclan las aguas usadas en la exploración petrolera los costos bajan, y el consumo de agua se reduce asta en un 67\%. Las aguas extraídas de los posos están compuestas de carburos (compuestos del petróleo), lodos, y oros materiales presentes según la región donde se encuentre el pozo.
+
+El tratamiento mas usado el la exploración petrolera es el de laguna de oxidación o decantación (Ver Figura 1), que requiere una extensión de terreno considerable y, por tanto, suelen construirse en zonas rurales. Las lagunas opcionales, que funcionan en condiciones mixtas, son las más comunes, con una profundidad de 1,5 a 7,5 m y una extensión superior a media hectárea. En la zona del fondo, donde se descomponen los sólidos, las condiciones son anaerobias; la zona próxima a la superficie es aeróbica, permitiendo la oxidación de la materia orgánica disuelta y coloidal. Puede lograrse una reducción de la DBO5 de un 75 a un 85 por ciento.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.6\textwidth]{Laguna}
+\caption{Lagunas de Oxidación} 
+\label{fig:areaes}
+\end{figure}
+
+Una vez eliminada la fracción orgánica sólida, el agua pasa a un depósito de sedimentación donde se depositan los materiales restantes(lodos resultantes de la exploración), que son retirados para su eliminación. El proceso de sedimentación puede reducir de un 20 a un 40\% la contaminación por lodos y de un 40 a un 60\% los sólidos en suspensión.
+
+La tasa de sedimentación se incrementa en algunas plantas de tratamiento industrial incorporando procesos llamados coagulación y floculación químicas al tanque de sedimentación. La coagulación es un proceso que consiste en añadir productos químicos como el sulfato de aluminio, el cloruro férrico o polielectrolitos a las aguas residuales; esto altera las características superficiales de los sólidos en suspensión de modo que se adhieren los unos a los otros y precipitan. La floculación provoca la aglutinación de los sólidos en suspensión. Ambos procesos eliminan más del 80\% de los sólidos en suspensión.
+
+\textit{\textbf{Metodología}}
+
+La toma de la muestra fue realizada en el mes de Agosto de 2000 mediante la división de la laguna circular de diámetro igual a 720 metros; en un cuadricula comenzando desde el centro y haciendo mediciones cada 30 metros paralelos a la tubería de ingreso y a lo largo de la misma (Ver Figura 2).
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.6\textwidth]{Laguna2}
+\caption{Lagunas de Oxidación - Muestreo} 
+\label{fig:areaes2}
+\end{figure}
+
+Para medir la profundidad se empleo un plomo fundido atado a una cinta métrica, los niveles de carburos y bacterias se midieron en el laboratorio de muestras recolectadas en cada punto y debidamente etiquetadas, la temperatura se midió en grados centígrados mediante el empleo de un termómetro. Las anteriores fueron las variables que se midieron en la laguna y con las cuales se realizará el trabajo.
+
+De manera que el interés es determinar si hay dependencia espacial en las lagunas de oxidación para las \textbf{Bacterías} y realizar predicciones de los lugares no muestreados mediante el mejor el método de krigin.
+
+Como la información de Bacterías debe ser tratada como resultados de procesos estocásticos, se tienen que cumplir con algunas condiciones básicas para aplicar los métodos krigin. Uno de estos es el de poseer estacionariedad. A continuación se muestra el análisis exploratorio.
+
+<<echo=FALSE, message=FALSE, warning=FALSE>>=
+library(rgeos); library(sp); library(maptools); library(car)
+library(geoR); library(gstat); library(readxl); library(xtable)
+
+# Directorio
+setwd("D:/A MEA USTA/ESTADISTICA ESPACIAL/TRABAJO 1/REPORTE")
+
+# Cargamos datos
+borde <- data.frame(read_excel("BaseLago.xlsx",sheet = 2))
+datos <- data.frame(read_excel("BaseLago.xlsx"))
+
+z1 <- datos$PROFUNDIDAD
+z2 <- datos$CARBUROS
+z3 <- datos$TEMPERATURA
+z4 <- datos$BACTERIAS
+x <- datos$EJE.X
+y <- datos$EJE.Y
+@
+
+\newpage
+\section{Análisis de Resultados}
+Las bacterias en la laguna de oxidación:
+
+<<warning=FALSE>>=
+plot(x,y,col="white",xlab="Longitud",ylab="Latitud",
+     main="Bacterias",axes=F,xlim=c(-450,450),ylim=c(-450,450))
+text(x,y,labels=z4)
+curve(sqrt(360^2-x^2),add=T,col="darkgreen",lwd=2)
+curve(-sqrt(360^2-x^2),add=T,col="darkgreen",lwd=2)
+@
+
+El análisis descriptivo se se muestran a continuación:
+
+<<echo=FALSE, fig.height=4, fig.width=10>>=
+datos1=data.frame(x,y,z4)
+geo1 = as.geodata(datos1, coords.col = 1:2, data.col = 3)
+
+par(mfrow = c(1, 3))
+hist(datos1$z4, freq = FALSE, main = "", xlab = "BACTERIAS", ylab = "Frecuencia",
+     xlim = c(0,1))
+curve(dnorm(x, mean(datos1$z4), sd(datos1$z4)), add = T)
+boxplot(datos1$z4)
+qqPlot(datos1$z4, ylab = "BACTERIAS")
+title(main=list("Gráficos descriptivos para la colonia de bacterias", cex=2,
+                col="black", font=3), outer=T,line=-2)
+limites1=c(min(datos1$z4), quantile(datos1$z4,probs = c(0.2, 0.4, 0.6, 0.8),
+                                    type = 5), max(datos1$z4))
+coordinates(datos1) = ~x+y
+@
+
+Se puede evidenciar un comportamiento asimétrico negativo en el número de bacterias, no se observa la presencia de datos atípicos. Evaluamos el supuesto de estacionariedad.
+
+<<fig.align='center',fig.height=4, fig.width=4>>=
+spplot(datos1, "z4", cuts = limites1)
+@
+
+Al parecer, la media de la bacterias no es constante sobre la región de observacion, luego el proceso no es estacionario y es necesario remover esta dependencia.
+
+<<echo=FALSE,fig.align='center',fig.height=4,fig.width=4>>=
+scatterplot(z4~x, reg.line=lm, smooth=TRUE, spread=TRUE, boxplots=FALSE, 
+            span=0.5, data=datos1, ylab = "Bacterias", xlab = "Longitud x")
+scatterplot(z4~y, reg.line=lm, smooth=TRUE, spread=TRUE, boxplots=FALSE, 
+            span=0.5, data=datos1, ylab = "Bacterias", xlab = "Latitud y")
+@
+
+Se ajusta un modelo cuadrático incluyendo el efecto de la interacción en las direcciones con un stepwise, si fuera de media constante ningun parametro debe ser siginificativo, se obtiene:
+
+<<results='asis'>>=
+modelo1 = lm(z4 ~ x + y + I(x * y) + I(x^2) + I(y^2), data = datos1)
+xtable(modelo1)
+@
+
+Se puede observar que el efecto de la interacción y el término cuadrático para la longitud son significativos, de manera que para el siguiente modelo no se incluirá el efecto cuadrático de la Latitud aunque si se incluirán los efectos principales.
+
+\textit{\textbf{Ajuste modelo seleccionado}}
+
+<<results='asis'>>=
+modelo.ajus = lm(z4 ~ x + y + I(x * y) + I(x^2) , data = datos1)
+xtable(modelo.ajus)
+@
+
+Evaluación de los residuales del modelo seleccionado
+
+<<echo=FALSE,fig.height=4,fig.width=10>>=
+par(mfrow = c(1, 3))
+hist(modelo.ajus$res, freq = FALSE, main = "", xlab = "Residuales", 
+     ylab = "Frecuencia",xlim = c(-0.6,0.6))
+curve(dnorm(x, mean(modelo.ajus$res), sd(modelo.ajus$res)), add = T)
+boxplot(modelo.ajus$res)
+qqPlot(modelo.ajus$res, ylab = "Bacterias")
+title(main=list("Gráficos sobre los residuales del modelo seleccionado", 
+                cex=2,col="black", font=3), outer=T,line=-2)
+@
+
+Ahora comprobamos si los residuales del modelo seleccionado son estacionarios ya que ninguno de los efectos en el modelo son significativos.
+
+<<results='asis'>>=
+modelo2=lm(modelo.ajus$res ~ x + y + I(x * y) + I(x^2) + I(y^2), data = datos1)
+xtable(modelo2)
+@
+
+<<echo=FALSE,message=FALSE,fig.align='center',fig.height=4,fig.width=4,comment=NA>>=
+#Gráficos contra las direcciones para los residuales
+scatterplot(modelo2$res~x, reg.line=lm, smooth=TRUE, spread=TRUE, boxplots=FALSE, span=0.5, data=datos1, ylab = "Residuales", xlab = "Latitud x")
+scatterplot(modelo2$res~y, reg.line=lm, smooth=TRUE, spread=TRUE, boxplots=FALSE, span=0.5, data=datos1, ylab = "Residuales", xlab = "Latitud y")
+@
+
+\newpage
+De manera que los residuales del modelo seleccionado son estacionarios. Construimos el semivariograma para ajustar el modelo. Se probaron dos tipos de modelos para el semivariograma, exponencial y gaussiano.
+
+<<echo=FALSE,results='hide', fig.keep='none'>>=
+datos2=data.frame(x=datos1$x,y=datos1$y,res=modelo.ajus$res)
+#Creando objeto de tipo geodata para el calculo del semivariograma
+geo = as.geodata(datos2, coords.col = 1:2, data.col = 3)
+#variog para estimar semivariograma
+var = variog(geo, max.dist = 300,direction = "omnidirectional")
+plot(var)
+#Ajuste de modelos al semivariograma
+#Aca se puede "jugar" con varios ajustes
+ev1=eyefit(var)
+ev1
+ev2=eyefit(var)
+ev2
+@
+
+<<echo=FALSE,results='hide',warning=FALSE,message=FALSE>>=
+#Estimacion del modelo de semivarianza
+#Minimos cuadrados ordinarios
+mod1=variofit(var,ini=ev1,weights="equal")
+mod1
+#Mínimos cuadrados ponderados
+mod2=variofit(var,ini=ev1,weights="npairs")
+mod2
+#Mínimos cuadrados ponderados
+mod3=variofit(var,ini=ev1,weights="cressie")
+mod3
+#Minimos cuadrados ordinarios
+mod4=variofit(var,ini=ev2,weights="equal")
+mod4
+#Mínimos cuadrados ponderados
+mod5=variofit(var,ini=ev2,weights="npairs")
+mod5
+#Mínimos cuadrados ponderados
+mod6=variofit(var,ini=ev2,weights="cressie")
+mod6
+@
+
+<<echo=FALSE,fig.align='center',fig.height=3.5,fig.width=5>>=
+plot(var,xlab="Distancia")
+lines(mod1, max.dist = 250, col = 1)
+lines(mod2, max.dist = 250, col = 2)
+lines(mod3, max.dist = 250, col = 3)
+legend("bottomright",legend = c("MCO", "MCP - npairs", "MCP - cressie"),
+       col = 1:5, lwd = 2, inset = .03, cex=0.5)
+title(main=list("Modelo Exponencial",cex=1,col="black", 
+                font=3), outer=T,line=-2)
+@
+
+<<echo=FALSE,fig.align='center',fig.height=3.5,fig.width=5>>=
+plot(var,xlab="Distancia")
+lines(mod4, max.dist = 250, col = 1)
+lines(mod5, max.dist = 250, col = 2)
+lines(mod6, max.dist = 250, col = 3)
+legend("bottomright",legend = c("MCO", "MCP - npairs", "MCP - cressie"),
+       col = 1:5, lwd = 2, inset = .03, cex=0.5)
+title(main=list("Modelo Gaussiano",cex=1,col="black", 
+                font=3), outer=T,line=-2)
+@
+
+\bigskip
+\textit{\textbf{Validación cruzada con Krigin Universal}}
+
+<<echo=FALSE,results='hide'>>=
+cruzada1=xvalid(geo,model=mod1,reestimate = F)
+cruzada2=xvalid(geo,model=mod2,reestimate = F)
+cruzada3=xvalid(geo,model=mod3,reestimate = F)
+cruzada4=xvalid(geo,model=mod4,reestimate = F)
+cruzada5=xvalid(geo,model=mod5,reestimate = F)
+cruzada6=xvalid(geo,model=mod6,reestimate = F)
+
+s1 <- sqrt(mean(cruzada1$error^2))
+s2 <- sqrt(mean(cruzada2$error^2))
+s3 <- sqrt(mean(cruzada3$error^2))
+s4 <- sqrt(mean(cruzada4$error^2))
+s5 <- sqrt(mean(cruzada5$error^2))
+s6 <- sqrt(mean(cruzada6$error^2))
+@
+
+Los resultados de la validación cruzada para los 6 modelos son:
+
+<<comment=NA,results='asis'>>=
+ECM.Modelo.Exponencial <- c(s1,s2,s3)
+ECM.Modelo.Gaussiano <- c(s4,s4,s6)
+ECM <- data.frame(ECM.Modelo.Exponencial,ECM.Modelo.Gaussiano)
+colnames(ECM) <- c("ECM Modelo Exponencial","ECM Modelo Gaussino")
+row.names(ECM) <- c("Modelo 1","Modelo 2","Modelo 3")
+xtable(ECM)
+@
+
+De manera que se elije el modelo gaussiano. Realizamos validación cruzada directamente sobre los valores de las Bacterias.
+
+<<echo=FALSE,results='hide',comment=NA>>=
+#Se repite el proceso para los otros modelos candidatos
+mod1_1 <- as.vgm.variomodel(mod1)
+kr1 <- krige.cv(z4 ~ x + y + I(x * y) + I(x^2), datos1,  mod1_1, maxdist = 250)
+mape1=mean(abs(kr1$residual)/kr1$observed)
+mape1
+mod2_1 <- as.vgm.variomodel(mod2)
+kr2 <- krige.cv(z4 ~ x + y + I(x * y) + I(x^2), datos1,  mod2_1, maxdist = 250)
+mape2=mean(abs(kr2$residual)/kr2$observed)
+mape2
+mod3_1 <- as.vgm.variomodel(mod3)
+kr3 <- krige.cv(z4 ~ x + y + I(x * y) + I(x^2), datos1,  mod3_1, maxdist = 250)
+mape3=mean(abs(kr3$residual)/kr3$observed)
+mape3
+mod4_1 <- as.vgm.variomodel(mod4)
+kr4 <- krige.cv(z4 ~ x + y + I(x * y) + I(x^2), datos1,  mod4_1, maxdist = 250)
+mape4=mean(abs(kr4$residual)/kr4$observed)
+mape4
+mod5_1 <- as.vgm.variomodel(mod5)
+kr5 <- krige.cv(z4 ~ x + y + I(x * y) + I(x^2), datos1,  mod5_1, maxdist = 250)
+mape5=mean(abs(kr5$residual)/kr5$observed)
+mape5
+mod6_1 <- as.vgm.variomodel(mod6)
+kr6 <- krige.cv(z4 ~ x + y + I(x * y) + I(x^2), datos1,  mod6_1, maxdist = 250)
+mape6=mean(abs(kr6$residual)/kr6$observed)
+mape6
+@
+
+<<comment=NA>>=
+mape1; mape2; mape3; mape4; mape5; mape6
+@
+
+De manera que se selecciona el modelo gaussiano con el método de Mínimos Cuadrados Ordinarios.
+
+\newpage
+\textit{\textbf{Kriging Universal}}
+
+La construción de la Laguna de Oxidación medediante un buffer se muestra a continuación:
+
+<<echo=FALSE,fig.align='center'>>=
+mapatrampas <- data.frame(x,y)
+p1 <- Polygon(rbind(borde, borde[1,]))
+p2 <- Polygons(list(p1= p1), ID= 1)
+p3 <- SpatialPolygons(list(p2= p2))
+p1ch <- gConvexHull(p3)
+bp1 <- (gBuffer(p1ch, width = 0)) # Ojo: buffer= 0 metros
+par(mfrow=c(1,1))
+plot(bp1, col= "lightgray")
+plot(p1ch, border= "red", lwd= 2, add= T)
+points(mapatrampas)
+title(main=list("Laguna de Oxidación",cex=1,col="black", 
+                font=3), outer=T,line=-2)
+@
+
+La interpolación mediante kriging universal se muestra a continuación:
+
+<<echo=FALSE,results='hide',fig.keep='none'>>=
+poligonos=bp1
+muestra = spsample(poligonos, n = 100000, "regular")
+muestra1=data.frame(muestra)
+names(muestra1) = c("x", "y")
+gridded(muestra1) = c("x", "y")
+plot(muestra)
+#Para cuadricular la muestra generada! porque se ha generado de forma regular
+
+#kriging universal sobre las Bacterias.
+krig_u=krige(formula=z4 ~ x+y+I(x*y)+I(x^2),datos1,muestra1,model=mod1_1)
+head(krig_u$var1.pred)
+head(krig_u$var1.var)
+@
+
+<<fig.align='center',fig.height=5,fig.width=5>>=
+#Mapa para las Bacterias
+li = list("sp.polygons", p1ch)
+pts = list("sp.points", datos1, pch = 3, col = "black", cex = 0.5)
+spplot(krig_u, c("var1.pred"),main = list("Kriging Universal para la Bacterias",
+       cex=1,font=3,col="black"), sp.layout = list(li, pts),contour = T, 
+       labels = T, pretty = TRUE, col = "darkgreen", 
+       col.regions = terrain.colors(100))
+@
+
+\newpage
+<<echo=TRUE,fig.align='center',fig.height=5,fig.width=5>>=
+li = list("sp.polygons", p1ch)
+pts = list("sp.points", datos1, pch = 3, col = "black", cex = 0.5)
+spplot(krig_u, c("var1.var"), main = list("Mapa para las varianzas de 
+colonia de bacterias",cex=1,font=3,col="black"),sp.layout=list(li, pts),
+contour = FALSE, labels = FALSE, pretty = TRUE,col="black",
+col.regions = terrain.colors(100))
+@
+
+\textit{\textbf{Interpolación - Método Inverso de la Distancia}}
+
+
+
+\newpage
+\section{Conclusiones}
+
+Una de las características más importantes de las bacterias es que su comportamiento tiene una dependencia espacial en las lagunas de oxidación. Se elijió como modelo de estructura de semivarianza un modelo Gaussiano utilizando el método de mínimos cuadrados ordinarios para estimar los parámetros. También se muestran las interpolaciones usando kriging ordinario. Se resalta que esta configuración es adecuada para realizar interpolaciones en los puntos no muestrados en las lagunas de oxidación.
+
+\textbf{Falta una conclusión: si el comportamiento de las bacterias ayudan o no la recuperación del agua... enfocado en el ejercicio}
+
+\end{document}
